@@ -22,12 +22,13 @@ const url = process.env.MONGO_URI;
 //     })
 // )
 // all will use cors
-const corsOptions = {
-    origin: 'http://localhost:5173',
-    credentials: true, 
-};
 
-app.use(cors(corsOptions));
+const corsOptions = {
+    origin: '*',  
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  };
+  
+  app.use(cors(corsOptions));
 
 app.use("/uploads/profiles", express.static("uploads/profiles"));
 app.use("/uploads/resumes", express.static("uploads/resumes"));
