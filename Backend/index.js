@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-import authRoutes from './routes/AuthRoutes.js';  
+import authRoutes from './routes/AuthRoutes.js';
 
 dotenv.config();
 
@@ -11,16 +11,23 @@ const app = express();
 
 const PORT = process.env.PORT || 5174;
 
-const url = process.env.MONGO_URI; 
- 
-app.use(
-    cors({
-        origin: [process.env.ORIGIN],
-        method: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-        credentials: true,
+const url = process.env.MONGO_URI;
 
-    })
-)
+// app.use(
+//     cors({
+//         origin: [process.env.ORIGIN],
+//         method: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//         credentials: true,
+
+//     })
+// )
+// all will use cors
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true, 
+};
+
+app.use(cors(corsOptions));
 
 app.use("/uploads/profiles", express.static("uploads/profiles"));
 app.use("/uploads/resumes", express.static("uploads/resumes"));
@@ -29,7 +36,7 @@ app.use(cookieParser())
 app.use(express.json())
 
 
-app.use("/api/auth",authRoutes)
+app.use("/api/auth", authRoutes)
 
 
 const start = () =>
@@ -40,7 +47,7 @@ const start = () =>
             console.log('Database Connected✅');
             app.listen(PORT, () => {
                 console.log(`🥰Server is running on port ${PORT}🥰`);
-            }); 
+            });
         })
         .catch((err) => {
             console.log('Database connection error:', err);
