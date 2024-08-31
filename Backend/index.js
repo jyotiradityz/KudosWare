@@ -24,7 +24,7 @@ const url = process.env.MONGO_URI;
 // all will use cors
 
 const corsOptions = {
-    origin: '*',  
+    origin: 'https://kudos-ware.vercel.app',  
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   };
   
