@@ -80,7 +80,7 @@ const Auth = () => {
                             <h1 className="text-5xl  font-bold md:text-6xl">Welcome</h1>
                             <img src={Victory} alt="sideImage" className='h-[90px]  ' />
                         </div>
-                        <p className='font-medium text-cente ' >Fill the details to get started with best chat app</p>
+                        <p className='font-medium text-cente ' >Fill the details to get started with best Recruiter Site</p>
                     </div>
                     <div className='flex items-center justify-center w-full'>
                         <Tabs className='w-3/4' defaultValue="login" >
