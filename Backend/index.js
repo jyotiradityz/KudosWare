@@ -24,11 +24,11 @@ const url = process.env.MONGO_URI;
 // all will use cors
 
 const corsOptions = {
-    origin: 'https://kudos-ware.vercel.app',  
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-  };
-  
-  app.use(cors(corsOptions));
+    origin: 'https://kudos-ware.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+};
+
+app.use(cors(corsOptions));
 
 app.use("/uploads/profiles", express.static("uploads/profiles"));
 app.use("/uploads/resumes", express.static("uploads/resumes"));
