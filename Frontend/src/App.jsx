@@ -7,6 +7,7 @@ import { useAppStore } from './store';
 import apiClient from './lib/api-client';
 import { GET_USER_INFO } from './utils/constant';
 import Job from './pages/job'; 
+import JobUser from './pages/userjobs';
 
 const App = () => {
 
@@ -49,13 +50,14 @@ const App = () => {
     }
   }, [userInfo, setUserInfo])
   if (loading) {
-    return <div>Loading</div>
+    return <div>Loading Wait for some time, Render Server is restating.....</div>
   }return (
     <BrowserRouter>
       <Routes>
         <Route path="/auth" element={<AuthRoute><Auth /></AuthRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path="/job" element={<PrivateRoute><Job /></PrivateRoute>} />
+        <Route path="/appliedjob" element={<PrivateRoute> <JobUser/> </PrivateRoute>} />
         <Route path="*" element={<Navigate to="/auth" />} />
       </Routes>
 

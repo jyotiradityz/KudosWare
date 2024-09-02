@@ -4,10 +4,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "../../../../components/ui/a
 import { useAppStore } from '@/store';
 import render from "image-render";
 import { HOST } from '@/utils/constant';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 const Navbar = () => {
   const { userInfo, setUserInfo } = useAppStore();
   const image = `${HOST}/${userInfo.image}`
+  const nav = useNavigate();
+  const handleNav=()=>{
+    nav('/appliedjob')
+  }
   return (
     <div className='flex relative w-full bg-black border-b-2 border-gray-700'>
       <div className='w-[650px] flex items-center pb-4 '>
@@ -16,16 +23,16 @@ const Navbar = () => {
       <div className='flex justify-end items-center w-full '>
 
           <div className="pr-10 ">
-            <Title text='Internships' className='text-white' />
+            <Button text='' className='text-white'  onClick={()=>{toast.error('Not Impleteted this part')}}>Internships</Button>
           </div>
           <div className="pr-10 ">
-            <Title text='Full time Jobs' className='text-white' />
+            <Button text='Full time Jobs' className='text-white' >Full time Jobs</Button>
           </div>
           <div className="pr-10 ">
-            <Title text='Update Resume' className='text-white' />
+            <Button text='Update Resume' className='text-white' >Update Resume</Button>
           </div>
-          <div className="pr-10 ">
-            <Title text='Career Advice' className='text-white' />
+          <div className="pr-10 " >
+            <Button text='Applied Job' className='text-white' onClick={handleNav} >Applied Job</Button>
           </div>
         </div>
         <div className='my-5'>

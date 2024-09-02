@@ -42,11 +42,32 @@ const Jobs = () => {
         console.log(resume);
         window.open(resume, "_blank");
     };
-
+    // const {userInfo, setUserInfo} = useAppStore();
     const handleSubmit = async () => {
         //job_id, company, title, location, salary, description, image, resume
-        console.log(selectedJob);
-
+        const newAppliedJob = {
+            job_id: selectedJob._id,
+            company: selectedJob.company,
+            title: selectedJob.title,
+            location: selectedJob.location,
+            salary: selectedJob.salary,
+            description: selectedJob.description,
+            image: selectedJob.image,
+            resume: userInfo.resume,
+        };
+    
+        const updatedUserInfo = {
+            ...userInfo,
+            appliedJobs: [...(userInfo.appliedJobs || []), newAppliedJob],
+        };
+    
+        setUserInfo(updatedUserInfo);
+        console.log(newAppliedJob);
+        
+        console.log(userInfo.appliedJobs);
+        
+        
+        
         const res = await apiClient.post(POST_APPLICATION, {
             job_id: selectedJob._id,
             company: selectedJob.company,
